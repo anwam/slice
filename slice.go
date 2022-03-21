@@ -1,11 +1,11 @@
 package slice
 
-func Map[T comparable](items []T, cb func(t T) T) (result []T) {
-	if len(items) == 0 {
-		return items
+func Map[T, K any](s []T, fn func(T) K) (result []K) {
+	if len(s) == 0 {
+		return result
 	}
-	for _, v := range items {
-		result = append(result, cb(v))
+	for _, v := range s {
+		result = append(result, fn(v))
 	}
 	return result
 }
